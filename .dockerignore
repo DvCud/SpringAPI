@@ -1,0 +1,28 @@
+# Git files
+.git
+.gitignore
+
+# IDE files
+.idea/
+*.iml
+*.iws
+*.ipr
+.vscode/
+
+# Build files
+target/
+!target/*.jar
+
+# Logs
+logs/
+*.log
+
+# OS specific files
+.DS_Store
+Thumbs.db
+
+# Other files not needed for build
+README.md
+LICENSE
+render.yaml
+.dockerignore
