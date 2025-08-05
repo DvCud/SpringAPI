@@ -1,12 +1,12 @@
 # Spring Boot API Application
 
-This is a Spring Boot REST API application for employee management with MySQL database integration. In this project I've created an interactive functional API using Spring Boot on IDEA IntelliJ IDE.
+This is a Spring Boot REST API application for employee management with H2 in-memory database integration. In this project I've created an interactive functional API using Spring Boot on IDEA IntelliJ IDE.
 
 ## Project Structure
 
 - Spring Boot 3.3.3
 - Java 17
-- MySQL Database
+- H2 In-Memory Database
 - JPA / Hibernate
 - Maven
 
@@ -15,7 +15,7 @@ This is a Spring Boot REST API application for employee management with MySQL da
 ### Prerequisites
 
 1. A GitHub repository with your code
-2. A MySQL database (you can use Render's PostgreSQL or an external MySQL service)
+2. No external database needed - the application uses H2 in-memory database
 
 ### Steps to Deploy
 
@@ -36,17 +36,18 @@ This is a Spring Boot REST API application for employee management with MySQL da
 
 3. **Configure Environment Variables**
 
-   In the Render dashboard for your service, go to the "Environment" tab and add the following environment variables:
+   The application is configured to use H2 in-memory database, so no database-specific environment variables need to be set manually. The following environment variables are already configured in the `render.yaml` file:
 
    ```
-   SPRING_DATASOURCE_URL=jdbc:mysql://your-mysql-host:3306/ems?useSSL=false
-   SPRING_DATASOURCE_USERNAME=your_mysql_username
-   SPRING_DATASOURCE_PASSWORD=your_mysql_password
+   SPRING_DATASOURCE_URL=jdbc:h2:mem:testdb
+   SPRING_DATASOURCE_DRIVERCLASSNAME=org.h2.Driver
+   SPRING_DATASOURCE_USERNAME=sa
+   SPRING_DATASOURCE_PASSWORD=
+   SPRING_JPA_DATABASE_PLATFORM=org.hibernate.dialect.H2Dialect
    SPRING_JPA_HIBERNATE_DDL_AUTO=update
-   SPRING_JPA_PROPERTIES_HIBERNATE_DIALECT=org.hibernate.dialect.MySQLDialect
+   SPRING_H2_CONSOLE_ENABLED=true
+   SPRING_H2_CONSOLE_PATH=/h2-console
    ```
-
-   Replace the values with your actual MySQL connection details.
 
 4. **Deploy**
 
@@ -54,7 +55,7 @@ This is a Spring Boot REST API application for employee management with MySQL da
 
 ### Alternative: Using render.yaml
 
-This repository includes a `render.yaml` file that can be used for Blueprint deployments. You'll still need to configure your database environment variables in the Render dashboard.
+This repository includes a `render.yaml` file that can be used for Blueprint deployments. All necessary environment variables for the H2 database are already configured in the `render.yaml` file.
 
 ## Local Development
 
@@ -62,16 +63,20 @@ This repository includes a `render.yaml` file that can be used for Blueprint dep
 
 - Java 17
 - Maven
-- MySQL
 
 ### Running Locally
 
 1. Clone the repository
-2. Configure MySQL connection in `src/main/resources/application.properties`
-3. Run the application:
+2. Run the application:
    ```
    ./mvnw spring-boot:run
    ```
+
+3. Access the H2 console at http://localhost:8080/h2-console with the following settings:
+   - JDBC URL: jdbc:h2:mem:testdb
+   - Username: sa
+   - Password: (leave empty)
+   - Driver Class: org.h2.Driver
 
 ## API Endpoints
 

@@ -13,13 +13,17 @@ import lombok.Setter;
 @Entity
 @Table(name = "employees")
 public class Employee {
-<<<<<<< HEAD
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private long id;
 
+    @Column(name = "first_name")
     private String firstName;
+    
+    @Column(name = "last_name")
     private String lastName;
+    
+    @Column(name = "email_id")
     private String emailId;
 
     // Getters and Setters
@@ -54,16 +58,4 @@ public class Employee {
     public void setEmailId(String emailId) {
         this.emailId = emailId;
     }
-=======
-
-    @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private long id;
-    @Column(name = "first_name")
-    private String firstName;
-    @Column(name = "last_name")
-    private String lastName;
-    @Column(name = "email_id")
-    private String emailId;
->>>>>>> 9d2b3835be7d088f34521bc9d6d3a6db48e811cc
 }

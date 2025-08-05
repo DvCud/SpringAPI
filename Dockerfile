@@ -20,12 +20,15 @@ WORKDIR /app
 # Copy the jar file from the build stage
 COPY --from=build /app/target/*.jar app.jar
 
-# Environment variables for MySQL connection (to be set in render.com)
-ENV SPRING_DATASOURCE_URL=jdbc:mysql://your-mysql-host:3306/ems?useSSL=false
-ENV SPRING_DATASOURCE_USERNAME=root
-ENV SPRING_DATASOURCE_PASSWORD=password
+# Environment variables for H2 database
+ENV SPRING_DATASOURCE_URL=jdbc:h2:mem:testdb
+ENV SPRING_DATASOURCE_DRIVERCLASSNAME=org.h2.Driver
+ENV SPRING_DATASOURCE_USERNAME=sa
+ENV SPRING_DATASOURCE_PASSWORD=
+ENV SPRING_JPA_DATABASE_PLATFORM=org.hibernate.dialect.H2Dialect
 ENV SPRING_JPA_HIBERNATE_DDL_AUTO=update
-ENV SPRING_JPA_PROPERTIES_HIBERNATE_DIALECT=org.hibernate.dialect.MySQLDialect
+ENV SPRING_H2_CONSOLE_ENABLED=true
+ENV SPRING_H2_CONSOLE_PATH=/h2-console
 
 # Expose the port the app runs on
 EXPOSE 8080
