@@ -1,6 +1,6 @@
 # Spring Boot API Application
 
-This is a Spring Boot REST API application for employee management with MySQL database integration.
+This is a Spring Boot REST API application for employee management with MySQL database integration. In this project I've created an interactive functional API using Spring Boot on IDEA IntelliJ IDE.
 
 ## Project Structure
 
@@ -43,7 +43,7 @@ This is a Spring Boot REST API application for employee management with MySQL da
    SPRING_DATASOURCE_USERNAME=your_mysql_username
    SPRING_DATASOURCE_PASSWORD=your_mysql_password
    SPRING_JPA_HIBERNATE_DDL_AUTO=update
-   SPRING_JPA_PROPERTIES_HIBERNATE_DIALECT=org.hibernate.dialect.MySQL5InnoDBDialect
+   SPRING_JPA_PROPERTIES_HIBERNATE_DIALECT=org.hibernate.dialect.MySQLDialect
    ```
 
    Replace the values with your actual MySQL connection details.

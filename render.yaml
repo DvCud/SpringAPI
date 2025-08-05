@@ -18,4 +18,4 @@ services:
       - key: SPRING_JPA_HIBERNATE_DDL_AUTO
         value: update
       - key: SPRING_JPA_PROPERTIES_HIBERNATE_DIALECT
-        value: org.hibernate.dialect.MySQL5InnoDBDialect
+        value: org.hibernate.dialect.MySQLDialect

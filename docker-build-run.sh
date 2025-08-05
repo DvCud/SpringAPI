@@ -11,7 +11,7 @@ docker run -p 8080:8080 \
   -e "SPRING_DATASOURCE_USERNAME=root" \
   -e "SPRING_DATASOURCE_PASSWORD=dev@31" \
   -e "SPRING_JPA_HIBERNATE_DDL_AUTO=update" \
-  -e "SPRING_JPA_PROPERTIES_HIBERNATE_DIALECT=org.hibernate.dialect.MySQL5InnoDBDialect" \
+  -e "SPRING_JPA_PROPERTIES_HIBERNATE_DIALECT=org.hibernate.dialect.MySQLDialect" \
   spring-api
 
 echo "Container is running. Access the API at http://localhost:8080/api/v1/employees"
